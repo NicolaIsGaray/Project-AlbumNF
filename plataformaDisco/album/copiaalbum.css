@@ -1,0 +1,255 @@
+@import url('https://fonts.googleapis.com/css2?family=Alata&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bungee&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kanit&display=swap');
+
+body {
+    background-color: #141414;
+    background-image: url(../images/backgrounds/NFAlbumBg.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 100px 1px;
+}
+
+ul {
+    list-style: none;
+}
+
+ol {
+    list-style-type: decimal-leading-zero;
+    text-align: center;
+    color: #C5B2A3;
+}
+
+#title {
+    display: flex;
+    position: inherit;
+}
+
+#title h2 {
+    background-color: #252525;
+    color: #C5B2A3;
+    display: flex;
+    justify-content: center;
+    font-family: 'Alata', sans-serif;
+    font-size: 30px;
+    width: 330px;
+    padding: 20px;
+    border: 1px solid#C5B2A3;
+    border-radius: 12px;
+    margin-bottom: 10px;
+    position: relative;
+    left: 18%;
+}
+
+
+#desc {
+    background-color: #252525;
+    border: 2px solid#C5B2A3;
+    padding: 18px;
+    font-family: 'Alata', sans-serif;
+    font-size: 20px;
+    color: #C5B2A3;
+    width: 1500px;
+    text-align: center;
+    position: relative;
+    left: 13%;
+}
+
+.sidebar {
+    background-color: #252525;
+    width: 200px;
+    height: 100%;
+    padding: 0px;
+    margin: 0px;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    left: 0px;
+    top: 0px;
+}
+
+#userName {
+    background-color: #C5B2A3;
+    text-align: center;
+    padding: 10px;
+    font-size: 22px;
+}
+
+.tabButton {
+    background-color: #313131;
+    color: #C5B2A3;
+    border: none;
+    margin-top: 6px;
+    transform: scale(1.2);
+    padding: 20px;
+    width: 90.7%;
+    transition: .3s;
+}
+
+#logOutButton {
+    position: relative;
+    top: 440px;
+}
+
+.tabButton:hover {
+    transition: .3s;
+    background-color: #C5B2A3;
+    color: #313131;
+    cursor: pointer;
+}
+
+.container {
+    border: none;
+    border-radius: 20px;
+    width: 60%;
+    position: relative;
+    left: 25%;
+    top: 74px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: space-around;
+}
+
+#albumList {
+    display: flex;
+    justify-content: center;
+    color: #C5B2A3;
+}
+
+.buttonBkg {
+    background-color: #31313170;
+    position: relative;
+    left: 23%;
+    width: 248px;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    transition: .3s;
+}
+
+.buttonBkg:hover {
+    outline: none;
+    background-color: #C5B2A3;
+    transition: .3s;
+}
+
+.songsButton {
+    outline: none;
+    border: none;
+    background: none;
+    transition: .3s;
+}
+
+.songsButton:hover {
+    transform: scale(1.2);
+    transition: .3s;
+}
+
+.songsButton:active {
+    transform: scale(0.8);
+    transition: .3s;
+}
+
+.deleteButton {
+    background-color: #313131;
+    outline: none;
+    border: none;
+    border-radius: 18px;
+    width: 40px;
+    position: relative;
+    bottom: 45px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.deleteButton:hover {
+    background-color: #bb1b1b;
+    transition: .3s;
+}
+
+.songTitle {
+    display: flex;
+    justify-content: space-evenly;
+    width: 720px;
+    font-size: 25px;
+    font-family: 'Kanit', sans-serif;
+}
+
+.songTitleBox {
+    width: 142px;
+}
+
+.duration {
+    font-size: 18px;
+}
+
+#one {
+    background-color: #181818a8;
+    border: none;
+    border-radius: 6px;
+    padding: 32px;
+    margin: 20px;
+    width: 500px;
+}
+#two {
+    background-color: #181818a8;
+    border: none;
+    border-radius: 6px;
+    padding: 32px;
+    margin: 20px;
+    width: 500px;
+}
+#three {
+    background-color: #181818a8;
+    border: none;
+    border-radius: 6px;
+    padding: 32px;
+    margin: 20px;
+    width: 500px;
+}
+#four {
+    background-color: #181818a8;
+    border: none;
+    border-radius: 6px;
+    padding: 32px;
+    margin: 20px;
+    width: 500px;
+}
+#five {
+    background-color: #181818a8;
+    border: none;
+    border-radius: 6px;
+    padding: 32px;
+    margin: 20px;
+    width: 500px;
+}
+
+#editButtonBkg {
+    display: flex;
+    justify-content: center;
+}
+
+#editButton {
+    background-color: #252525;
+    outline: none;
+    border: 2px solid #C5B2A3;
+    color: #C5B2A3;
+    border-radius: 8px;
+    font-size: 25px;
+    font-weight: bold;
+    padding: 15px;
+    margin: 16px;
+    width: 10%;
+    position: relative;
+    left: 1.5%;
+    cursor: pointer;
+    transition: .3s;
+}
+
+#editButton:hover {
+    background-color: #C5B2A3;
+    color: #313131;
+    transform: scale(1.1);
+    transition: .3s;
+}

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="addSongStyle.css">
+    <link rel="shortcut icon" href="../icon.ico" type="image/x-icon">
+    <title>Añadir Canción</title>
+</head>
+<body>
+    <div class="container">
+        <form class="form" action="" method="POST" autocomplete="off">
+            <h1>Añadir Canción</h1>
+            <div>
+                <span class="subTitle">Nombre de la Canción</span> <br>
+                <input type="text" required name="Titulo" id="albumTitle">
+            </div>
+            <br>
+            <div>
+                <span class="subTitle">Duración</span> <br>
+                <input type="time" required name="Duración" id="duration">
+            </div>
+            <br>
+            <div>
+                <span class="subTitle">Añade el link de la canción</span>
+                <input type="url" name="songLink" id="songlink" placeholder="Youtube Link">
+            </div>
+            <br>
+            <input class="enviar" type="submit" value="Confirmar">
+    </form>
+    <br>
+    <button id="cancelar">Cancelar</button>
+    </div>
+
+    <ul class="sidebar">
+        <img src="../images/extra/userProfile.jpg" alt="">
+        <span id="userName">
+            NateMusicReal
+        </span>
+        <li>
+          <a href="">
+            <button class="tabButton">Other Albums</button>
+        </a>
+        </li>
+        <li>
+          <a href="./editAlbum.html">
+            <button class="tabButton">Edit Album</button>
+        </a>
+        </li>
+        <li>
+            <a href="">
+                <button class="tabButton" id="logOutButton">Log Out</button>
+            </a>
+        </li>
+      </ul>
+      <script src="./addSong.js"></script>
+</body>
+</html>

@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Alata&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bungee&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kanit&display=swap');
+
+body {
+    background-color: #807E6F;
+    background-image: url(../images/backgrounds/albumsBkg.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 100px 1px;
+}
+
+ul {
+    list-style: none;
+}
+
+ol {
+    list-style-type: decimal-leading-zero;
+    text-align: center;
+    color: #C5B2A3;
+}
+
+#title {
+    display: flex;
+    position: inherit;
+}
+
+#title h2 {
+    background-color: #252525b2;
+    color: #C5B2A3;
+    display: flex;
+    justify-content: center;
+    font-family: 'Alata', sans-serif;
+    font-size: 30px;
+    width: 330px;
+    padding: 20px;
+    margin-bottom: 10px;
+    position: relative;
+    left: 40%;
+    top: 10px;
+}
+
+
+#desc {
+    background-color: #252525b2;
+    padding: 18px;
+    font-family: 'Alata', sans-serif;
+    font-size: 20px;
+    color: #C5B2A3;
+    width: 1500px;
+    text-align: center;
+    position: relative;
+    left: 13%;
+}
+
+.sidebar {
+    background-color: #252525;
+    width: 200px;
+    height: 100%;
+    padding: 0px;
+    margin: 0px;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    left: 0px;
+    top: 0px;
+}
+
+#userName {
+    background-color: #C5B2A3;
+    text-align: center;
+    padding: 10px;
+    font-size: 22px;
+}
+
+.tabButton {
+    background-color: #313131;
+    color: #C5B2A3;
+    border: none;
+    margin-top: 6px;
+    transform: scale(1.2);
+    padding: 20px;
+    width: 90.7%;
+    transition: .3s;
+}
+
+#logOutButton {
+    position: relative;
+    top: 440px;
+}
+
+.tabButton:hover {
+    transition: .3s;
+    background-color: #C5B2A3;
+    color: #313131;
+    cursor: pointer;
+}
+
+#albumSubTitleBox {
+    font-size: 20px;
+    font-family: 'Alata', sans-serif;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    width: 200px;
+    color: #e4ddd0;
+    background-color: #313131;
+    border: 2px solid #C5B2A3;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+#albumsList {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    top: 2vw;
+}
+
+#albumsBase {
+    display: flex;
+
+}
+
+.albumSolo {
+    padding: 30px;
+    position: relative;
+    top: 2vw;
+}
+
+.albumSolo img {
+    border: 4px solid #313131;
+    border-radius: 8px;
+}
+
+.favorite {
+    
+}

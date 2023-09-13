@@ -1,0 +1,161 @@
+@import url('https://fonts.googleapis.com/css2?family=REM:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kanit:ital@0;1&display=swap');
+
+@media screen and (max-width: 900px){
+    body {
+        background-attachment: fixed;
+    }
+    .titleTour {
+        transform: scale(1.7);
+    }
+    .sidebar {
+        display: none !important;
+    }
+}
+    
+body {
+    background-color: #000000;
+    background-image: url(../images/backgrounds/imgTour.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-attachment: fixed;
+}
+ul {
+    list-style: none;
+    padding: 0%;
+}
+
+#welcome {
+    color: white;
+    font-family: 'REM', sans-serif;
+}
+
+#welcomeBox {
+    position: absolute;
+    top: 14.5vw;
+    right: 70.5vw;
+    background-color: #252525;
+    border: 2px solid #dddddd;
+    border-radius: 6px;
+    padding: 16px;
+}
+
+.sidebar {
+    background-color: #252525;
+    width: 200px;
+    height: 100%;
+    padding: 0px;
+    margin: 0px;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    left: 0px;
+    top: 0px;
+}
+
+#userName {
+    background-color: #C5B2A3;
+    text-align: center;
+    padding: 10px;
+    font-size: 22px;
+}
+
+.tabButton {
+    background-color: #313131;
+    color: #C5B2A3;
+    border: none;
+    margin-top: 6px;
+    transform: scale(1.2);
+    padding: 20px;
+    width: 90.7%;
+    transition: .3s;
+}
+
+#logOutButton {
+    position: relative;
+    top: 500px;
+}
+
+.tabButton:hover {
+    transition: .3s;
+    background-color: #C5B2A3;
+    color: #313131;
+    cursor: pointer;
+}
+
+.titleTour {
+    display: flex;
+    justify-content: center;
+    margin-top: 6vw;
+}
+
+.titleTour h1 {
+    font-size: 2vw;
+    font-family: 'REM', sans-serif;
+    background-color: #313131;
+    color: #C5B2A3;
+    padding: 20px;
+    border: 2px solid#C5B2A3;
+    border-radius: 12px;
+}
+
+#imgTour {
+    transform: scale(0.6);
+    position: absolute;
+    top: 10%;
+}
+
+.ticketBox {
+    display: flex;
+    justify-content: center;
+}
+
+.tourInfo {
+    background-color: #3131318f;
+    color: #C5B2A3;
+    width: 60%;
+    padding: 60px;
+    margin-bottom: 35px;
+}
+
+.ticketList {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #313131b2;
+    border: 2px solid #C5B2A3;
+}
+
+.innerList {
+    padding: 16px;
+}
+
+p {
+    background-color: #272727;
+    border: 2px solid #C5B2A3;
+    border-radius: 6px;
+    padding: 10px;
+    font-size: 20px;
+}
+
+.ticketButton {
+    background-color: #272727;
+    border: 2px solid #C5B2A3;
+    color: #C5B2A3;
+    outline: none;
+    width: 150px;
+    height: 55px;
+    position: relative;
+    top: 18px;
+    padding: 10px;
+    font-family: 'Kanit', sans-serif;
+    font-size: 20px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.ticketButton:hover {
+    background-color: #C5B2A3;
+    color: #272727;
+    transition: .3s;
+}

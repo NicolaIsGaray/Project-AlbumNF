@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=Alata&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bungee&display=swap');
+
+body {
+    background-color: #141414;
+    background-image: url(../images/backgrounds/NFAlbumBg.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 100px 1px;
+}
+
+ul {
+    list-style: none;
+}
+
+h1 {
+    text-align: center;
+}
+
+.sidebar {
+    background-color: #252525;
+    width: 200px;
+    height: 100%;
+    padding: 0px;
+    margin: 0px;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    left: 0px;
+    top: 0px;
+}
+
+#userName {
+    background-color: #C5B2A3;
+    text-align: center;
+    padding: 10px;
+    font-size: 22px;
+}
+
+.tabButton {
+    background-color: #313131;
+    color: #C5B2A3;
+    border: none;
+    margin-top: 6px;
+    transform: scale(1.2);
+    padding: 20px;
+    width: 90.7%;
+    transition: .3s;
+}
+
+#logOutButton {
+    position: relative;
+    top: 440px;
+}
+
+.tabButton:hover {
+    transition: .3s;
+    background-color: #C5B2A3;
+    color: #313131;
+    cursor: pointer;
+}
+
+.container {
+    border: none;
+    border-radius: 20px;
+    width: 60%;
+    position: relative;
+    left: 25%;
+    top: 74px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: space-around;
+}
+
+form {
+    transform: scale(1.0);
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Alata', sans-serif;
+    color: #C5B2A3;
+}
+
+form input[type="text"],
+form input[type="date"],
+form input[type="url"],
+form textarea {
+    background-color: #444343;
+    padding: 20px;
+    font-size: 20px;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    outline: 2px solid#C5B2A3;
+    width: 100%;
+    text-align: center;
+    transition: .3s;
+}
+
+form input[type="text"]:focus,
+form input[type="date"]:focus,
+form input[type="url"]:focus {
+    transform: scale(1.05);
+    transition: .3s;
+}
+
+textarea {
+    resize: none;
+}
+
+.subTitle {
+    font-size: 30px;
+    outline: 5px #141414;
+}
+
+form .enviar {
+    padding: 1rem 0.75rem;
+    width: 185px;
+    position: relative;
+    top: 25px;
+    left: 16%;
+    display: flex;
+    align-items: center;
+    border-radius: 3rem;
+    background-color: #707070;
+    color: #e6d2c4;
+    border: none;
+    cursor: pointer;
+    transform: scale(1.2);
+    transition: all 300ms;
+    font-weight: 600;
+    font-size: 20px;
+    justify-content: center;
+  }
+  
+  form .enviar:hover {
+    background-color: #C5B2A3;
+    color: #707070;
+  }
