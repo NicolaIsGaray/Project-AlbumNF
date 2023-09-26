@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/addAlbumStyle.css">
+    <link rel="shortcut icon" href="../icon.ico" type="image/x-icon">
+    <title>Agregar Album</title>
+</head>
+<body>
+    <form class="form" action="" method="POST" autocomplete="off">
+        <div class="container">
+            <h1>Nuevo Album</h1>
+            <div>
+                <span class="subTitle">Título del Album</span> <br>
+                <input type="text" required name="Titulo" id="albumTitle" placeholder="Turn The Music Up">
+            </div>
+            <br>
+            <div>
+                <span class="subTitle">Fecha de Lanzamiento</span> <br>
+                <input type="date" required name="Fecha del lanzamiento" id="diaLanzamiento">
+            </div>
+            <br>
+            <div>
+                <span class="subTitle">Descripción</span> <br>
+                <textarea name="Descripción" id="desc" cols="30" rows="10" style="position: static;" placeholder="Agrega información del albúm." required></textarea>
+            </div>
+            <br>
+            <div>
+                <span class="subTitle">Imágen del Album</span>
+                <input type="url" name="Link de la Imagen" id="linkImg" placeholder="https//imageauthor.com/image.png" required>
+            </div>
+            <br>
+            <input class="enviar" type="submit" value="Agregar Album">
+        </div>
+    </form>
+    <ul class="sidebar">
+        <img src="../images/extra/userProfile.jpg" alt="">
+        <span id="userName">
+            NateMusicReal
+        </span>
+        <li>
+          <a href="">
+            <button class="tabButton">Other Albums</button>
+        </a>
+        </li>
+        <li>
+          <a href="./addSong.html">
+            <button class="tabButton">Add Songs</button>
+        </a>
+        </li>
+        <li>
+            <a href="">
+                <button class="tabButton" id="logOutButton">Log Out</button>
+            </a>
+        </li>
+    </ul>
+    
+      <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</body>
+</html>

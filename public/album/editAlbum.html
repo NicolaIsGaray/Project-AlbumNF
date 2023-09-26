@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/editStyle.css">
+    <link rel="shortcut icon" href="../icon.ico" type="image/x-icon">
+    <title>Editar Album</title>
+</head>
+<body>
+    <div class="container">
+        <form class="form" action="" method="POST" autocomplete="off">
+            <h1>Editar Album</h1>
+            <div>
+                <span class="subTitle">Título del Album</span> <br>
+                <input type="text" required name="Titulo" id="albumTitle">
+            </div>
+            <br>
+            <div>
+                <span class="subTitle">Fecha de Lanzamiento</span> <br>
+                <input type="date" required name="Fecha del lanzamiento" id="diaLanzamiento">
+            </div>
+            <br>
+            <div>
+                <span class="subTitle">Descripción</span> <br>
+                <textarea name="Descripción" id="desc" cols="30" rows="10" style="position: static;" required></textarea>
+            </div>
+            <br>
+            <div>
+                <span class="subTitle">Imágen del Album</span>
+                <input type="url" name="Link de la Imagen" id="linkImg" requi>
+            </div>
+            <br>
+            <input class="enviar" type="submit" value="Confirmar">
+    </form>
+    <br>
+    <button id="cancelar">Cancelar</button>
+    </div>
+
+    <ul class="sidebar">
+        <img src="../images/extra/userProfile.jpg" alt="">
+        <span id="userName">
+            NateMusicReal
+        </span>
+        <li>
+          <a href="">
+            <button class="tabButton">Other Albums</button>
+        </a>
+        </li>
+        <li>
+          <a href="./addSong.html">
+            <button class="tabButton">Add Songs</button>
+        </a>
+        </li>
+        <li>
+            <a href="">
+                <button class="tabButton" id="logOutButton">Log Out</button>
+            </a>
+        </li>
+      </ul>
+</body>
+</html>
