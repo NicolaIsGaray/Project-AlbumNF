@@ -1,16 +1,18 @@
-const user = require("./users")
-const albums = require("./albums")
+const express = require("express");
+const router = express.Router();
 
-const express = require("express")
-const router = express.Router()
+const userRouter = require("./users");
+const albumRouter = require("./albums");
 
-const bcrypt = require("bcrypt");
+router.get('/home', async (req, res) => {
+    try {
+        res.status(200).send(req.body)
+    } catch (error) {
+        res.status(500).send(error)
+    }
+})
 
-const hashPassword = async (password) => {
-    
-}
-
-router.use("/users", user)
-router.use("/albums", albums)
+router.use('/user', userRouter);
+router.use('/album', albumRouter);
 
 module.exports = router;

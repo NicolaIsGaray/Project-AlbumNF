@@ -22,7 +22,7 @@ const renderAlbums = () => {
 
 const getAlbums = async () => {
     try {
-        const response = await axios.get("http://localhost:5000/albums/allAlbums");
+        const response = await axios.get("/home");
         response.data.map((Album) => {
         renderAlbums(Album)
         })

@@ -1,19 +1,26 @@
-console.log("Ayo");
+const divAlbums = document.querySelector(".albums")
 
-const favoriteRecords = ["album1", "album2", "album3"];
-function addFavorites(favorites) {
-  const imgs = document.querySelectorAll(".albumSolo img");
+const renderAlbums = () => {
+    const div = document.createElement("div");
+    const imgAlbum = document.createElement("img");
+    div.classList.add("album")
 
-  imgs.forEach((img) => {
-    if (favorites.includes(img.alt)) {
-      const icon = document.createElement("i");
-      icon.classList.add("fa-solid");
-      icon.classList.add("fa-star");
-      icon.classList.add("favorites")
-      img.parentNode.appendChild(icon);
-      img.parentElement.classList.add("favorite");
-    }
-  });
+    let urlAlbumImg = Album.urlAlbum
+    imgAlbum.setAttribute("src", urlAlbumImg)
+
+    div.appendChild(imgAlbum);
+    divAlbums.appendChild(div);
 }
 
-addFavorites(favoriteRecords)
+const getAlbums = async () => {
+    try {
+        const response = await axios.get("/albums/allAlbums");
+        response.data.map((Album) => {
+        renderAlbums(Album)
+        })
+    } catch (error) {
+        swal('Vaya!', 'Parece que ha habido un problema al cargar tu album. Porfavor, intenta denuevo.', 'error');
+    }
+}
+
+getAlbums()

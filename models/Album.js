@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const albumInfo = new mongoose.Schema ({
+const Album = new mongoose.Schema ({
     title: {
         type: String,
         required: true
@@ -31,4 +31,4 @@ const albumInfo = new mongoose.Schema ({
     urlAlbum: {}
 })
 
-module.exports = mongoose.model("Album Information", albumInfo)
+module.exports = mongoose.model("Album Information", Album)
