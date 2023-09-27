@@ -31,7 +31,7 @@ const connectMongo = async() => {
     try {
         await mongoose.connect(url);
         app.listen(5000, () => {
-            console.log("Esta levantado en el puerto 5000 y conectado a la base de datos.");
+            console.log(`Esta levantado en el puerto ${PORT} y conectado a la base de datos.`);
         })
 
     } catch (error) {
