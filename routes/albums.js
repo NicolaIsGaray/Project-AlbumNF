@@ -2,12 +2,12 @@ const express = require("express");
 const router = express.Router();
 const Album = require("../models/Album");
 
-router.post('/addAlbum', async (req, res) => {
+router.post('/albums/addAlbum', async (req, res) => {
     try {
         let album = await Album.create(req.body)
-        res.status(200).send("Album creado", album)
+        res.status(201).send(album)
     } catch (error) {
-        res.status(500).send("Error al agregar el album:", error)
+        res.status(500).send(album)
     }
 })
 
