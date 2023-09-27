@@ -15,7 +15,6 @@ const url = `mongodb+srv://${dbUser}:${dbPass}@intro.f8ceic4.mongodb.net/?retryW
 const routes = require("./routes/index");
 
 app.use(express.json())
-// app.use(express.static(path.join(__dirname, "public")));
 app.use(
     express.static("public", {
       setHeaders: (res, path) => {
