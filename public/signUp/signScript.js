@@ -1,11 +1,34 @@
-const getSignUp = async () => {
-    try {
-        const response = await axios.get("http://localhost:5000/users/signUp");
-        response.data.map((User) => {
-        })
-    } catch (error) {
-        console.log(error);
+function getInputValues() {
+    const nombreInput = document.querySelector("#name");
+    const emailInput = document.querySelector("#email");
+    const passwordInput = document.querySelector("#password");
+    const lastNameInput = document.querySelector("#lastName");
+
+    const nombreValue = nombreInput.value;
+    const emailValue = emailInput.value;
+    const passwordValue = passwordInput.value;
+    const lastNameValue = lastNameInput.value;
+
+    return {
+        nombre: nombreValue,
+        email: emailValue,
+        password: passwordValue,
+        lastName: lastNameValue
     }
 }
 
-getSignUp()
+const userRegister = async (e) => {
+    e.preventDefault ()
+    const ObjectToSend = getInputValues()
+    try {
+        await axios.post("../../user/users/signUp", ObjectToSend)
+        window.location.href = "../index.html"
+    } catch (error) {
+        console.log(error);
+    }
+} 
+
+const buttonRegister = document.querySelector("#userRegisterButton")
+buttonRegister.addEventListener("click", (e) => {
+    userRegister(e);
+})

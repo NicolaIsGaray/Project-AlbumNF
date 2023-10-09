@@ -3,8 +3,10 @@ const User = require("../models/User");
 const router = express.Router();
 
 router.post('/users/signUp', async (req, res) => {
+    const {password, email, nombre, apellido} = req.body
+    console.log(req.body);
     const user = {
-        password: hashed,
+        password:
         email,
         nombre,
         apellido
@@ -23,7 +25,7 @@ router.get('/users/userData/:id', async (req, res) => {
     try {
         let answer = await User.findById(req.params.id)
         res.status(200).send({user: {name: answer.name,
-             lastName: answer.lastName,
+             apellido: answer.apellido,
               email: answer.email}})
     } catch (error) {
         res.status(500).send(console.log("Error."))

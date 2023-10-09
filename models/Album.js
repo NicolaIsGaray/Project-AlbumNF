@@ -12,23 +12,17 @@ const Album = new mongoose.Schema ({
         max: [200, "Must respect the max characters length."]
         },
 
-    // dateRelease: {
-    //     type: Date,
-    //     required: true,
-    //     validate: {
-    //         validator: (v) => {
-    //             if (dateRelease <= 0) {
-    //                 return false
-    //             }
-    //         },
-    //         message: 'Error! The date must be valid!'
-    //     }
-    // },
-    songs: {
-        titleSong: {type: String},
-        duration: {}
+    dateRelease: {
+        type: Date,
+        required: true,
     },
-    urlAlbum: {}
+    // songs: [
+    //     {
+    //         titleSong: {type: String},
+    //         duration: {}
+    //     }
+    // ],
+    urlAlbum: {type: String}
 })
 
 module.exports = mongoose.model("Album Information", Album)

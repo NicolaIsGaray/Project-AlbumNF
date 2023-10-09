@@ -2,16 +2,25 @@ const express = require("express");
 const router = express.Router();
 const Album = require("../models/Album");
 
-router.post('/albums/addAlbum', async (req, res) => {
+router.post('/addAlbum', async (req, res) => {
+    const {title, description, dateRelease, songs, urlAlbum} = req.body
+    console.log(req.body);
+    const album = {
+        title,
+        description,
+        dateRelease,
+        songs,
+        urlAlbum
+    }
     try {
-        let album = await Album.create(req.body)
+        const album = await Album.create(req.body)
         res.status(201).send(album)
     } catch (error) {
-        res.status(500).send(album)
+        res.status(500).send(error)
     }
 })
 
-router.get('/albums/editAlbum', async (req, res) => {
+router.get('/editAlbum', async (req, res) => {
     try {
         res.status(200).send("Edit Album Route Working")
     } catch (error) {
@@ -19,7 +28,7 @@ router.get('/albums/editAlbum', async (req, res) => {
     }
 })
 
-router.get('/albums/albumModifySong', async (req, res) => {
+router.get('/albumModifySong', async (req, res) => {
     try {
         res.status(200).send("Modify Song Route Working")
     } catch (error) {
@@ -27,7 +36,7 @@ router.get('/albums/albumModifySong', async (req, res) => {
     }
 })
 
-router.get('/albums/allAlbums', async (req, res) => {
+router.get('/showAlbums', async (req, res) => {
     try {
         let albumRes = await Album.find()
         console.log(albumRes);
@@ -37,7 +46,7 @@ router.get('/albums/allAlbums', async (req, res) => {
     }
 })
 
-router.get('/albums/albumSelected', async (req, res) => {
+router.get('/albumSelected', async (req, res) => {
     try {
         res.status(200).send("Selected Album Route Working")
     } catch (error) {
@@ -45,7 +54,7 @@ router.get('/albums/albumSelected', async (req, res) => {
     }
 })
 
-router.get('/albums/albumDelete', async (req, res) => {
+router.get('/albumDelete', async (req, res) => {
     try {
         res.status(200).send("Delete Album Route Working")
     } catch (error) {
@@ -53,4 +62,4 @@ router.get('/albums/albumDelete', async (req, res) => {
     }
 })
 
-module.exports = router
+module.exports = router;

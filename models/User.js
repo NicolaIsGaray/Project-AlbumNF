@@ -4,27 +4,9 @@ const regex = /^[\w-.]+@([\w-]+.)+[\w-]{2,4}$/;
 const userInfo = new mongoose.Schema ({
     nombre: {
         type: String,
-        required: true,
-        validate: {
-            validator: (v) => {
-                if (this.nombre.length < 2) {
-                    return false
-                }
-            },
-            message: 'Your name must have at least 2 characters!'
-        }
     },
     apellido: {
         type: String,
-        required: true,
-        validate: {
-            validator: (v) => {
-                if (this.apellido.length < 2) {
-                    return false
-                }
-            },
-            message: 'Your lastname must have at least 2 characters!'
-        }
     },
     email: {
         type: String,

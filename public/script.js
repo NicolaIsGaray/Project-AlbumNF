@@ -19,16 +19,3 @@ const renderAlbums = () => {
     div.appendChild(imgAlbum);
     divAlbums.appendChild(div);
 }
-
-const getAlbums = async () => {
-    try {
-        const response = await axios.get("/home");
-        response.data.map((Album) => {
-        renderAlbums(Album)
-        })
-    } catch (error) {
-        console.log(error);
-    }
-}
-
-getAlbums()

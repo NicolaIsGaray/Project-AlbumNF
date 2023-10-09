@@ -18,7 +18,7 @@
             <br>
             <div>
                 <span class="subTitle">Fecha de Lanzamiento</span> <br>
-                <input type="date" required name="Fecha del lanzamiento" id="diaLanzamiento">
+                <input type="date" required name="Fecha del lanzamiento" id="releaseDate">
             </div>
             <br>
             <div>
@@ -31,7 +31,7 @@
                 <input type="url" name="Link de la Imagen" id="linkImg" placeholder="https//imageauthor.com/image.png" required>
             </div>
             <br>
-            <input class="enviar" type="submit" value="Agregar Album">
+            <input class="enviar" type="submit" value="Agregar Album" id="addAlbumButton">
         </div>
     </form>
     <ul class="sidebar">
@@ -40,7 +40,7 @@
             NateMusicReal
         </span>
         <li>
-          <a href="">
+          <a href="./albums.html">
             <button class="tabButton">Other Albums</button>
         </a>
         </li>
@@ -58,5 +58,6 @@
     
       <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
       <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+      <script src="./addAlbum.js"></script>
 </body>
 </html>
