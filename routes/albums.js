@@ -20,9 +20,12 @@ router.post('/addAlbum', async (req, res) => {
     }
 })
 
-router.get('/editAlbum', async (req, res) => {
+router.put('/editAlbum/:id', async (req, res) => {
     try {
-        res.status(200).send("Edit Album Route Working")
+        const album = await Album.findByIdAndUpdate(req.params.id, req.body, {
+            new: true
+        })
+        res.status(200).send(album)
     } catch (error) {
         res.status(500).send("Error:", error)
     }
@@ -46,19 +49,56 @@ router.get('/showAlbums', async (req, res) => {
     }
 })
 
-router.get('/albumSelected', async (req, res) => {
+router.get('/albumSelected/:idAlbumSel', async (req, res) => {
     try {
-        res.status(200).send("Selected Album Route Working")
+        let select = await Album.findById(req.params.id)
+        res.status(200).send(select)
     } catch (error) {
         res.status(500).send("Error:", error)
     }
 })
 
-router.get('/albumDelete', async (req, res) => {
+router.delete('/albumDelete/:idAlbum', async (req, res) => {
     try {
-        res.status(200).send("Delete Album Route Working")
+        await Album.findByIdAndDelete(req.params.idAlbum);
+        res.status(200).send("Album Deleted Successfully")
     } catch (error) {
         res.status(500).send("Error:", error)
+    }
+})
+
+router.get('/song/:idSong', async (req, res) => {
+    try {
+        let song = await Album.find(req.params.idSong);
+        song.songs.push(req.body);
+        await Album.findByIdAndUpdate(req.params.idAlbum, song, {
+            new: true,
+        })
+        res.status(200).send(song)
+    } catch (error) {
+        console.log(error);
+    }
+})
+
+router.post('/songAdd/:idAdd', async (req, res) => {
+    try {
+        let addSong = await Album.findByIdAndUpdate(req.params.idAdd, songs[{
+            titleSong,
+            duration,
+            link,
+        }])
+        res.status(201).send(addSong);
+    } catch (error) {
+        res.status(500).send(error)
+    }
+})
+
+router.delete('/songRemove/:idSong', async (req, res) => {
+    try {
+        let song = await Album.findByIdAndDelete(req.params.idSong, req.body);
+        res.status(200).send(song)
+    } catch (error) {
+        console.log(error);
     }
 })
 

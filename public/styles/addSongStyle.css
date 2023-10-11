@@ -107,7 +107,7 @@ form input[type="url"]:focus {
     font-size: 30px;
 }
 
-form .enviar {
+form #send {
     padding: 1rem 0.75rem;
     margin: 10px;
     width: 185px;
@@ -128,7 +128,7 @@ form .enviar {
     justify-content: center;
   }
   
-  form .enviar:hover {
+  form #send:hover {
     background-color: #C5B2A3;
     color: #707070;
   }

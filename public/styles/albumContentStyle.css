@@ -184,39 +184,7 @@ ol {
     font-size: 18px;
 }
 
-#one {
-    background-color: #181818a8;
-    border: none;
-    border-radius: 6px;
-    padding: 32px;
-    margin: 20px;
-    width: 500px;
-}
-#two {
-    background-color: #181818a8;
-    border: none;
-    border-radius: 6px;
-    padding: 32px;
-    margin: 20px;
-    width: 500px;
-}
-#three {
-    background-color: #181818a8;
-    border: none;
-    border-radius: 6px;
-    padding: 32px;
-    margin: 20px;
-    width: 500px;
-}
-#four {
-    background-color: #181818a8;
-    border: none;
-    border-radius: 6px;
-    padding: 32px;
-    margin: 20px;
-    width: 500px;
-}
-#five {
+ol {
     background-color: #181818a8;
     border: none;
     border-radius: 6px;

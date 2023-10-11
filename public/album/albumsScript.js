@@ -9,6 +9,8 @@ const redirect = (id, url) => {
   window.location.href = `${url}?album=${id}`;
 };
 
+const deleteAlbum = document.querySelectorAll(".deleteButton")
+
 const divAlbums = document.getElementById("albumsList")
 
 //Function para renderizar (mostrar) la página.
@@ -17,11 +19,19 @@ const renderAlbums = (Album) => {
     const imgAlbum = document.createElement("img");
     div.classList.add("albumSolo")
 
-    let albumImg = Album.urlAlbum;
+    let albumImg = Album.urlAlbum ? Album.urlAlbum : "../images/albums/default.jpg"
     imgAlbum.setAttribute("src", albumImg)
+
+    const trashButton = document.createElement("img");
+    trashButton.setAttribute("src", "../images/icons/deleteIco.png")
+    trashButton.appendChild(div)
 
     div.appendChild(imgAlbum);
     divAlbums.appendChild(div);
+
+    div.addEventListener("click", () => {
+      redirect(Album._id,`./albumContent.html`)
+    })
 }
 
 const getAlbums = async () => {

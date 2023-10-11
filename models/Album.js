@@ -16,12 +16,13 @@ const Album = new mongoose.Schema ({
         type: Date,
         required: true,
     },
-    // songs: [
-    //     {
-    //         titleSong: {type: String},
-    //         duration: {}
-    //     }
-    // ],
+    songs: [
+        {
+            titleSong: {type: String},
+            duration: {},
+            link: {type: String}
+        }
+    ],
     urlAlbum: {type: String}
 })
 

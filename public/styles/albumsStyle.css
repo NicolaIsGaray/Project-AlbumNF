@@ -101,7 +101,9 @@ ol {
     font-family: 'Alata', sans-serif;
     display: flex;
     justify-content: center;
-    position: absolute;
+    position: relative;
+    left: 43.5vw;
+    top: 5vw;
     width: 200px;
     color: #e4ddd0;
     background-color: #313131;
@@ -113,7 +115,10 @@ ol {
 #albumsList {
     display: flex;
     justify-content: center;
+    flex-direction: column;
     position: relative;
+    align-content: center;
+    flex-wrap: wrap;
     top: 2vw;
 }
 
@@ -130,8 +135,28 @@ ol {
 }
 
 .albumSolo img {
-    transform: scale(1.2);
     resize: both;
     border: 4px solid #313131;
     border-radius: 8px;
+}
+
+.albumSolo img:hover {
+    cursor: pointer;
+}
+
+.deleteButton {
+    background-color: #313131;
+    outline: none;
+    border: none;
+    border-radius: 18px;
+    width: 40px;
+    position: relative;
+    bottom: 45px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.deleteButton:hover {
+    background-color: #bb1b1b;
+    transition: .3s;
 }
