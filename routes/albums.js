@@ -51,7 +51,7 @@ router.get('/showAlbums', async (req, res) => {
 
 router.get('/albumSelected/:idAlbumSel', async (req, res) => {
     try {
-        let select = await Album.findById(req.params.id)
+        let select = await Album.find()
         res.status(200).send(select)
     } catch (error) {
         res.status(500).send("Error:", error)
@@ -67,18 +67,31 @@ router.delete('/albumDelete/:idAlbum', async (req, res) => {
     }
 })
 
-router.get('/song/:idSong', async (req, res) => {
+// router.get('/song/:idAlbum', async (req, res) => {
+//     try {
+//         let song = await Album.findById(req.params.idAlbum);
+//         song.songs.push(req.body);
+//         await Album.findByIdAndUpdate(req.params.idAlbum, song, {
+//             new: true,
+//         })
+//         res.status(200).send(song)
+//     } catch (error) {
+//         console.log(error);
+//     }
+// })
+
+router.put("/song/:idAlbum", async (req, res) => {
     try {
-        let song = await Album.find(req.params.idSong);
-        song.songs.push(req.body);
-        await Album.findByIdAndUpdate(req.params.idAlbum, song, {
-            new: true,
-        })
-        res.status(200).send(song)
+      let album = await Album.findById(req.params.idAlbum);
+      album.canciones.push(req.body);
+      await Album.findByIdAndUpdate(req.params.idAlbum, album, {
+        new: true,
+      });
+      res.status(200).send(album);
     } catch (error) {
-        console.log(error);
+      res.status(500).send({ "Error al solicitar todos los albums": error });
     }
-})
+  });
 
 router.post('/songAdd/:idAdd', async (req, res) => {
     try {

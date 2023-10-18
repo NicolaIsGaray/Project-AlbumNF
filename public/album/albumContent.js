@@ -71,11 +71,9 @@ const renderSongs = (Album) => {
     oList.appendChild(list)
 }
 
-const idSong = query[1]
-
 const getSongs = async () => {
   try {
-    const response = await axios.get(`../../album/song/${idSong}`);
+    const response = await axios.get(`../../album/song/${idAlbum}`);
       console.log(response);
       response.data.map((Album) => {
       renderSongs(Album)
@@ -88,5 +86,5 @@ const getSongs = async () => {
 getSongs()
 
 addSong.addEventListener("click", () => {
-  redirect(Album._id, "./addSong.html")
+  redirect(Album._id,`./addSong.html`)
 })

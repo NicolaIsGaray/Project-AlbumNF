@@ -1,5 +1,10 @@
-const query = window.location.search.split("=");
-const idSong = query[1]
+const urlParams = new URLSearchParams(window.location.search);
+const idAlbum = urlParams.get('idAlbum');
+
+// const query = window.location.search.split("=");
+// const idAlbum = query[1];
+
+let album;
 
 const redirect = (id) => {
     window.location.href = `./albumContent.html?album=${id}`;
@@ -21,11 +26,22 @@ function getInputValues () {
     }
 }
 
+const getAlbums = async () => {
+    try {
+        const { data } = await axios.get(`../../album/albumSelected/${idAlbum}`);
+        album = data;
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+getAlbums()
+
 const songRegister = async (e) => {
     e.preventDefault();
     const ObjectToSend = getInputValues()
     try {
-        await axios.put(`../../album/songAdd/${idSong}`, ObjectToSend);
+        await axios.put(`../../album/song/${idAlbum}`, ObjectToSend);
         window.location.href = "./albums.html"
     } catch (error) {
         console.log(error);
