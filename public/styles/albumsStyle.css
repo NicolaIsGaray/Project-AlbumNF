@@ -6,8 +6,9 @@ body {
     background-color: #807E6F;
     background-image: url(../images/backgrounds/albumsBkg.png);
     background-repeat: no-repeat;
-    background-size: cover;
-    background-position: 100px 1px;
+    background-position-x: 30vw;
+    background-position-y: 10vw;
+    background-attachment: fixed;
 }
 
 ul {

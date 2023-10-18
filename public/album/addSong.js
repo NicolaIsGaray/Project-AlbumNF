@@ -1,8 +1,6 @@
-const urlParams = new URLSearchParams(window.location.search);
-const idAlbum = urlParams.get('idAlbum');
-
 // const query = window.location.search.split("=");
 // const idAlbum = query[1];
+console.log(idAlbum);
 
 let album;
 
@@ -41,7 +39,7 @@ const songRegister = async (e) => {
     e.preventDefault();
     const ObjectToSend = getInputValues()
     try {
-        await axios.put(`../../album/song/${idAlbum}`, ObjectToSend);
+        await axios.put(`../../album/song/add/${idAlbum}`, ObjectToSend);
         window.location.href = "./albums.html"
     } catch (error) {
         console.log(error);

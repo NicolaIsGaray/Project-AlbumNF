@@ -58,7 +58,7 @@ router.get('/albumSelected/:idAlbumSel', async (req, res) => {
     }
 })
 
-router.delete('/albumDelete/:idAlbum', async (req, res) => {
+router.delete('/album/delete/:idAlbum', async (req, res) => {
     try {
         await Album.findByIdAndDelete(req.params.idAlbum);
         res.status(200).send("Album Deleted Successfully")
@@ -67,48 +67,33 @@ router.delete('/albumDelete/:idAlbum', async (req, res) => {
     }
 })
 
-// router.get('/song/:idAlbum', async (req, res) => {
-//     try {
-//         let song = await Album.findById(req.params.idAlbum);
-//         song.songs.push(req.body);
-//         await Album.findByIdAndUpdate(req.params.idAlbum, song, {
-//             new: true,
-//         })
-//         res.status(200).send(song)
-//     } catch (error) {
-//         console.log(error);
-//     }
-// })
-
-router.put("/song/:idAlbum", async (req, res) => {
+router.get('/showSong/:idAlbum', async (req, res) => {
+    let idSong = req.query.idSong
     try {
-      let album = await Album.findById(req.params.idAlbum);
-      album.canciones.push(req.body);
-      await Album.findByIdAndUpdate(req.params.idAlbum, album, {
-        new: true,
-      });
-      res.status(200).send(album);
+        let albumRes = await Album.find(req.params.idAlbum)
+        console.log(albumRes);
+        res.status(200).send(albumRes)
     } catch (error) {
-      res.status(500).send({ "Error al solicitar todos los albums": error });
-    }
-  });
-
-router.post('/songAdd/:idAdd', async (req, res) => {
-    try {
-        let addSong = await Album.findByIdAndUpdate(req.params.idAdd, songs[{
-            titleSong,
-            duration,
-            link,
-        }])
-        res.status(201).send(addSong);
-    } catch (error) {
-        res.status(500).send(error)
+        res.status(500).send("Error:", error)
     }
 })
 
-router.delete('/songRemove/:idSong', async (req, res) => {
+router.put('/song/add/:idAlbum', async (req, res) => {
     try {
-        let song = await Album.findByIdAndDelete(req.params.idSong, req.body);
+        let song = await Album.findById(req.params.idAlbum);
+        song.songs.push(req.body);
+        await Album.findByIdAndUpdate(req.params.idAlbum, song, {
+            new: true,
+        })
+        res.status(200).send(song)
+    } catch (error) {
+        console.log(error);
+    }
+})
+
+router.delete('/song/remove/:idAlbum', async (req, res) => {
+    try {
+        let song = await Album.findByIdAndDelete(req.params.idAlbum, req.body);
         res.status(200).send(song)
     } catch (error) {
         console.log(error);

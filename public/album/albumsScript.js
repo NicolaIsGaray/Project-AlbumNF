@@ -1,7 +1,9 @@
-// const addAlbum = document.querySelector("#addAlbum");
-// const backMain = document.querySelector("#backMain");
-// const logOut = document.querySelector("#logOut");
+//[Selección de botones (o acciones) dentro del HTML]
+const addAlbum = document.querySelector("#addAlbum");
+const backMain = document.querySelector("#backMain");
+const logOut = document.querySelector("#logOut");
 
+//[TRASPASO DEL ID DEL ALBUM] /Funcional/
 const query = window.location.search.split("=");
 const idAlbum = query[1]
 
@@ -9,12 +11,13 @@ const redirect = (id, url) => {
   window.location.href = `${url}?album=${id}`;
 };
 
-const deleteAlbum = document.querySelectorAll(".deleteButton")
-
+//[APARTADO DE RENDERIZADO]
 const divAlbums = document.getElementById("albumsList")
 
 //Function para renderizar (mostrar) la página.
 const renderAlbums = (Album) => {
+  const deleteAlbum = document.querySelectorAll(".deleteButton") //Ver y acomodar a futuro, luego de arreglar "idAlbum" en "addSong.html".
+
     const div = document.createElement("div");
     const imgAlbum = document.createElement("img");
     div.classList.add("albumSolo")
@@ -29,11 +32,17 @@ const renderAlbums = (Album) => {
     div.appendChild(imgAlbum);
     divAlbums.appendChild(div);
 
+    //"Album._id" es funcional aqui.
+    //¿Origen?...
+    console.log(Album._id);
+
     div.addEventListener("click", () => {
       redirect(Album._id,`./albumContent.html`)
     })
 }
 
+//[OBTENCIÓN DE LOS ALBUMS] /Funcional/
+//= Mediante AXIOS =
 const getAlbums = async () => {
   try {
     const response = await axios.get(`../../album/showAlbums`);

@@ -1,5 +1,21 @@
 const mongoose = require("mongoose");
 
+const Song = new mongoose.Schema({
+    titleSong: {
+        type: String,
+        required: true
+    },
+    duration: {
+        type: Number,
+        required: true
+    },
+    link: {
+        type: String,
+        required: true
+    }
+});
+
+
 const Album = new mongoose.Schema ({
     title: {
         type: String,
@@ -16,13 +32,7 @@ const Album = new mongoose.Schema ({
         type: Date,
         required: true,
     },
-    songs: [
-        {
-            titleSong: {type: String},
-            duration: {},
-            link: {type: String}
-        }
-    ],
+    songs: [Song],
     urlAlbum: {type: String}
 })
 

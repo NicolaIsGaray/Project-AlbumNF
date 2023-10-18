@@ -2,11 +2,16 @@ const addSong = document.querySelector("#addSong");
 const backMain = document.querySelector("#backMain");
 const logOut = document.querySelector("#logOut");
 
-const query = window.location.search.split("=");
-const idAlbum = query[1]
+//Problema Principal "IdAlbum" no se transpasa correctamente al script "addSong.js".
+//En el script "albumsScript.js" en el momento de usar "redirect", el "idAlbum" se transpasa con éxito hacia "albumContent.html". En busca de soluciones...
 
-const redirect = (id, url) => {
-  window.location.href = `${url}?album=${id}`;
+//Problema a Resolver.
+const query = window.location.search.split("=");
+const idAlbum = query[1];
+console.log(idAlbum);
+
+const redirect = (id) => {
+  window.location.href = `./addSong.html?album=${id}`;
 };
 
 const divSongs = document.getElementById("albumsList")
@@ -69,11 +74,13 @@ const renderSongs = (Album) => {
     })
 
     oList.appendChild(list)
+    
 }
 
-const getSongs = async () => {
+//Problema a Resolver.
+const getAlbums = async () => {
   try {
-    const response = await axios.get(`../../album/song/${idAlbum}`);
+    const response = await axios.get(`../../album/showAlbums`);
       console.log(response);
       response.data.map((Album) => {
       renderSongs(Album)
@@ -83,8 +90,9 @@ const getSongs = async () => {
   }
 }
 
-getSongs()
+getAlbums()
 
 addSong.addEventListener("click", () => {
-  redirect(Album._id,`./addSong.html`)
+  console.log(idAlbum);
+  redirect(idAlbum)
 })
