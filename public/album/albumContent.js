@@ -1,11 +1,14 @@
+//[Selección de botones (o acciones) dentro del HTML]
 const addSong = document.querySelector("#addSong");
 const backMain = document.querySelector("#backMain");
 const logOut = document.querySelector("#logOut");
 
-//Problema Principal "IdAlbum" no se transpasa correctamente al script "addSong.js".
-//En el script "albumsScript.js" en el momento de usar "redirect", el "idAlbum" se transpasa con éxito hacia "albumContent.html". En busca de soluciones...
+//PROBLEMA PRINCIPAL: 
+//- "IdAlbum" no se transpasa correctamente al script "addSong.js".
+//- En el script "albumsScript.js" al momento de usar "redirect", el "idAlbum" se transpasa con éxito hacia "albumContent.html". 
+//¿? En busca de soluciones... ¿?
 
-//Problema a Resolver.
+//PROBLEMA A RESOLVER...
 const query = window.location.search.split("=");
 const idAlbum = query[1];
 console.log(idAlbum);
@@ -14,6 +17,7 @@ const redirect = (id) => {
   window.location.href = `./addSong.html?album=${id}`;
 };
 
+//[APARTADO DE RENDERIZADO] /Funcional...?/
 const divSongs = document.getElementById("albumsList")
 
 //Function para renderizar (mostrar) la página.
@@ -74,10 +78,10 @@ const renderSongs = (Album) => {
     })
 
     oList.appendChild(list)
-    
 }
 
-//Problema a Resolver.
+//PROBLEMA A RESOLVER...
+//Buscar forma de obtener las canciones mediante AXIOS. Quizá usar el repositorio de "intro-agosto" ayude a guiarme. ¡¡NO ENREDARME MENTALMENTE!!
 const getAlbums = async () => {
   try {
     const response = await axios.get(`../../album/showAlbums`);
@@ -92,6 +96,7 @@ const getAlbums = async () => {
 
 getAlbums()
 
+//HASTA NO TENER RESUELTO "idAlbum" NO HAY NADA QUE HACER AQUI.
 addSong.addEventListener("click", () => {
   console.log(idAlbum);
   redirect(idAlbum)
