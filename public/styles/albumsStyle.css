@@ -136,7 +136,8 @@ ol {
 }
 
 .albumSolo img {
-    resize: both;
+    width: 300px;
+    height: 300px;
     border: 4px solid #313131;
     border-radius: 8px;
 }

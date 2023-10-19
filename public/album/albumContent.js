@@ -1,24 +1,42 @@
 //[Selección de botones (o acciones) dentro del HTML]
-const addSong = document.querySelector("#addSong");
+const addSong = document.querySelector("#addSong")
+const editAlbum = document.querySelector("#editAlbum");
 const backMain = document.querySelector("#backMain");
 const logOut = document.querySelector("#logOut");
 
-//PROBLEMA PRINCIPAL: 
-//- "IdAlbum" no se transpasa correctamente al script "addSong.js".
-//- En el script "albumsScript.js" al momento de usar "redirect", el "idAlbum" se transpasa con éxito hacia "albumContent.html". 
-//¿? En busca de soluciones... ¿?
+const query = window.location.search.split("=")
+//Al momento de aplicar "split.("="), se transforma en un arreglo (?album=) en la posición 0 y lo que sigue de "=" esta en la posicion 1."
+const idAlbum = query[1]
 
-//PROBLEMA A RESOLVER...
-const query = window.location.search.split("=");
-const idAlbum = query[1];
-console.log(idAlbum);
-
-const redirect = (id) => {
-  window.location.href = `./addSong.html?album=${id}`;
-};
+const redirect = async (id, url) => {
+  window.location.href = `${url}?album=${id}`
+}
 
 //[APARTADO DE RENDERIZADO] /Funcional...?/
 const divSongs = document.getElementById("albumsList")
+
+const renderAlbum = (Album) => {
+  const divTitle = document.querySelector(".titleDiv");
+  const divDiv = document.querySelector(".descDiv");
+
+  divTitle.classList.add("titleDiv");
+  divDiv.classList.add("descDiv");
+
+  const albTitle = document.querySelector(".titleC");
+  const albDesc = document.querySelector(".classDesc");
+
+  albTitle.textContent = Album.title;
+  albDesc.textContent = Album.description;
+
+  //LA JODIDA SOLUCIÓN AL ENVIO DE ID.
+  editAlbum.addEventListener("click", () => {
+    redirect(Album._id, "./editAlbum.html")
+  })
+
+  addSong.addEventListener("click", () => {
+    redirect(Album._id, "./addSong.html")
+  })
+}
 
 //Function para renderizar (mostrar) la página.
 const renderSongs = (Album) => {
@@ -80,24 +98,20 @@ const renderSongs = (Album) => {
     oList.appendChild(list)
 }
 
-//PROBLEMA A RESOLVER...
-//Buscar forma de obtener las canciones mediante AXIOS. Quizá usar el repositorio de "intro-agosto" ayude a guiarme. ¡¡NO ENREDARME MENTALMENTE!!
 const getAlbums = async () => {
   try {
-    const response = await axios.get(`../../album/showAlbums`);
+    const response = await axios.get(`../../album/selected/${idAlbum}`);
       console.log(response);
-      response.data.map((Album) => {
-      renderSongs(Album)
-      })
+      // Envolver el objeto en un array si no es un array
+    const albums = Array.isArray(response.data) ? response.data : [response.data];
+
+    // Ahora puedo usar map
+    albums.map((Album) => {
+      renderAlbum(Album);
+    });
   } catch (error) {
       console.log(error);;
   }
 }
 
 getAlbums()
-
-//HASTA NO TENER RESUELTO "idAlbum" NO HAY NADA QUE HACER AQUI.
-addSong.addEventListener("click", () => {
-  console.log(idAlbum);
-  redirect(idAlbum)
-})

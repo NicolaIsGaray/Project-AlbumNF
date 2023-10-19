@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const Album = require("../models/Album");
 
+//[FUNCIONAL]
 router.post('/addAlbum', async (req, res) => {
     const {title, description, dateRelease, songs, urlAlbum} = req.body
     console.log(req.body);
@@ -27,18 +28,30 @@ router.put('/editAlbum/:id', async (req, res) => {
         })
         res.status(200).send(album)
     } catch (error) {
-        res.status(500).send("Error:", error)
+        res.status(500).send(error)
     }
 })
 
-router.get('/albumModifySong', async (req, res) => {
+router.post('/users/signUp', async (req, res) => {
+    const {password, email, nombre, apellido} = req.body
+    console.log(req.body);
+    const user = {
+        password:
+        email,
+        nombre,
+        apellido
+    }
+
     try {
-        res.status(200).send("Modify Song Route Working")
+        let newUser = await User.create(req.body);
+        res.status(201).send(newUser)
     } catch (error) {
-        res.status(500).send("Error:", error)
+        console.log(error);
     }
+    
 })
 
+//[FUNCIONAL]
 router.get('/showAlbums', async (req, res) => {
     try {
         let albumRes = await Album.find()
@@ -49,47 +62,64 @@ router.get('/showAlbums', async (req, res) => {
     }
 })
 
-router.get('/albumSelected/:idAlbumSel', async (req, res) => {
+//[FUNCIONAL]
+router.get('/selected/:idAlbumSel', async (req, res) => {
     try {
-        let select = await Album.find()
+        let select = await Album.findById(req.params.idAlbumSel)
+        if (!select) {
+            return res.status(404).json({ error: 'Album not found' });
+        }
         res.status(200).send(select)
     } catch (error) {
-        res.status(500).send("Error:", error)
+        res.status(500).send("Error")
     }
 })
 
 router.delete('/album/delete/:idAlbum', async (req, res) => {
     try {
         await Album.findByIdAndDelete(req.params.idAlbum);
-        res.status(200).send("Album Deleted Successfully")
+        res.status(204).send("Album Deleted Successfully")
     } catch (error) {
-        res.status(500).send("Error:", error)
+        res.status(500).send("Error")
     }
 })
 
-router.get('/showSong/:idAlbum', async (req, res) => {
-    let idSong = req.query.idSong
+router.get('/showSongs/:idAlbum', async (req, res) => {
     try {
-        let albumRes = await Album.find(req.params.idAlbum)
-        console.log(albumRes);
-        res.status(200).send(albumRes)
+        const albumId = req.params.idAlbum;
+        const album = await Album.findById(albumId);
+
+        if (!album) {
+            return res.status(404).json({ message: 'Album not found' });
+        }
+
+        const songs = album.songs; // Supongamos que 'songs' es un arreglo de canciones dentro del álbum
+        res.status(200).json({ songs });
     } catch (error) {
-        res.status(500).send("Error:", error)
+        console.error(error);
+        res.status(500).json({ message: 'Internal Server Error' });
     }
-})
+});
 
 router.put('/song/add/:idAlbum', async (req, res) => {
     try {
-        let song = await Album.findById(req.params.idAlbum);
-        song.songs.push(req.body);
-        await Album.findByIdAndUpdate(req.params.idAlbum, song, {
-            new: true,
-        })
-        res.status(200).send(song)
+        const albumId = req.params.idAlbum;
+        const songData = req.body;
+
+        const album = await Album.findById(albumId);
+        if (!album) {
+            return res.status(404).json({ message: 'Album not found' });
+        }
+
+        album.songs.push(songData);
+        const updatedAlbum = await album.save();
+
+        res.status(200).json({ album: updatedAlbum });
     } catch (error) {
-        console.log(error);
+        console.error(error);
+        res.status(500).json({ message: 'Internal Server Error' });
     }
-})
+});
 
 router.delete('/song/remove/:idAlbum', async (req, res) => {
     try {

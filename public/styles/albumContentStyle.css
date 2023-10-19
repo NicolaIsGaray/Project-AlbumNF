@@ -20,16 +20,17 @@ ol {
     color: #C5B2A3;
 }
 
-#title {
+.titleDiv {
     display: flex;
     position: inherit;
 }
 
-#title h2 {
+.titleDiv h2 {
     background-color: #252525;
     color: #C5B2A3;
     display: flex;
     justify-content: center;
+    text-align: center;
     font-family: 'Alata', sans-serif;
     font-size: 30px;
     width: 330px;
@@ -42,7 +43,7 @@ ol {
 }
 
 
-#desc {
+.descDiv {
     background-color: #252525;
     border: 2px solid#C5B2A3;
     padding: 18px;

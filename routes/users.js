@@ -2,6 +2,10 @@ const express = require("express");
 const User = require("../models/User");
 const router = express.Router();
 
+router.get('/me', async (req, res) => {
+    
+})
+
 router.post('/users/signUp', async (req, res) => {
     const {password, email, nombre, apellido} = req.body
     console.log(req.body);

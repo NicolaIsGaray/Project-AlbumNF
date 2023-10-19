@@ -1,8 +1,10 @@
-// const query = window.location.search.split("=");
-// const idAlbum = query[1];
-console.log(idAlbum);
+const urlParams = new URLSearchParams(window.location.search);
+const idAlbum = urlParams.get('album');
 
-let album;
+if (!idAlbum) {
+  alert("Error.");
+}
+console.log('ID del álbum:', idAlbum);
 
 const redirect = (id) => {
     window.location.href = `./albumContent.html?album=${id}`;
@@ -26,8 +28,9 @@ function getInputValues () {
 
 const getAlbums = async () => {
     try {
-        const { data } = await axios.get(`../../album/albumSelected/${idAlbum}`);
+        const { data } = await axios.get(`../../album/selected/${idAlbum}`);
         album = data;
+        return album
     } catch (error) {
         console.log(error);
     }

@@ -16,7 +16,7 @@ const divAlbums = document.getElementById("albumsList")
 
 //Function para renderizar (mostrar) la página.
 const renderAlbums = (Album) => {
-  const deleteAlbum = document.querySelectorAll(".deleteButton") //Ver y acomodar a futuro, luego de arreglar "idAlbum" en "addSong.html".
+  const deleteAlbum = document.querySelectorAll(".deleteButton") //Ver y acomodar a futuro.
 
     const div = document.createElement("div");
     const imgAlbum = document.createElement("img");
