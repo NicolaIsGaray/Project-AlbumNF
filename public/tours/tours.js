@@ -72,9 +72,9 @@ const confirm = Swal.fire({
 document.addEventListener('DOMContentLoaded', async () => {
     try {
         const response = await axios.get("../../user/me");
-        const span = document.querySelector("#welcome");
-        span.textContent = `Bienvenido/a, ${response.data.nombre} ${response.data.apellido}`;
+        const userName = document.querySelector("#welcome");
+        userName.textContent = `Bienvenido/a, ${response.data.nombre} ${response.data.apellido}`;
     } catch (error) {
-        console.log(error);
+        window.location.href = "../login/login.html";
     }
 });
