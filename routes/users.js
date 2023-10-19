@@ -92,7 +92,6 @@ router.get('/me', async (req, res) => {
         res.send(payload)
     } catch (error) {
         res.status(401).send(error.message);
-        window.location.href="../public/login/login.html"
     }
 })
 

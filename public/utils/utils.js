@@ -4,7 +4,7 @@ const onLoad = async () => {
       const userName = document.querySelector("#userName")
       userName.textContent = `${response.data.nombre} ${response.data.apellido}`;
     } catch (error) {
-      console.log(error);
+      window.location.href = "../login/login.html"
     }
   };
 

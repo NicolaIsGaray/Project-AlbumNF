@@ -13,7 +13,7 @@ function getInputValues() {
         nombre: nombreValue,
         email: emailValue,
         password: passwordValue,
-        lastName: lastNameValue
+        apellido: lastNameValue
     }
 }
 
