@@ -1,9 +1,9 @@
 import { onLoad } from "../utils/utils.js"
+import { logOut } from "../utils/utils.js";
 
 //[Selección de botones (o acciones) dentro del HTML]
 const addAlbum = document.querySelector("#addAlbum");
 const backMain = document.querySelector("#backMain");
-const logOut = document.querySelector("#logOut");
 
 //[TRASPASO DEL ID DEL ALBUM] /Funcional/
 const query = window.location.search.split("=");
@@ -107,5 +107,11 @@ const deleteAlbum = async (Album) => {
     console.log(error);
   }
 }
+
+const buttonLogOut = document.querySelector("#logOutButton");
+buttonLogOut.addEventListener("click", () => {
+    logOut();
+    window.location.href = `../login/login.html`
+})
 
 onLoad()

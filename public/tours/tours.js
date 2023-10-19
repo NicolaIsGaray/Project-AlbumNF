@@ -1,14 +1,3 @@
-import { onLoad } from "../utils/utils.js"
-
-let nombre = prompt("Porfavor, introduzca su nombre.")
-let span = document.querySelector("#welcome")
-
-while (nombre.length < 3) {
-    nombre = prompt('Demasiado corto. Ingrese al menos 3 caracteres.')
-}
-span.textContent = `Hola ${nombre}🎫`
-alert(`Bienvenido ${nombre} ¿Desea adquirir tickets?🎟`)
-
 let tickets = {
     "Toronto": 10,
     "Kanata": 20,
@@ -47,15 +36,45 @@ function disabledSoldOutButtons(tickets) {
 }
 
 
-let edadUsuario = parseInt(prompt("Ingrese su edad."))
 const botones = document.querySelectorAll(".ticketButton")
 
-if (edadUsuario < 18) {
-    swal(`¡Vaya! Parece que eres menor de edad`, `No podrás adquirir estos tickets.`, `info`)
-    for (let i = 0; i < botones.length; i++) {
-        botones[i].setAttribute("disabled", "disabled");
-        botones[i].textContent = "❌";
-    }    
-}
+const confirm = Swal.fire({
+    title: '¿Cuantos años tienes?',
+    icon: 'question',
+    input: 'range',
+    inputLabel: 'Puedes usar [↑ - ↓] para mayor precisión!',
+    inputAttributes: {
+      min: 8,
+      max: 120,
+      step: 1
+    },
+    inputValue: 18
+  }).then((confirm) => {
+    if (confirm.isConfirmed) {
+        const edad = confirm.value
 
-onLoad()
+        if (edad < 18) {
+            swal(`¡Vaya! Parece que eres menor de edad`, `No podrás adquirir estos tickets.`, `info`)
+            for (let i = 0; i < botones.length; i++) {
+                botones[i].setAttribute("disabled", "disabled");
+                botones[i].textContent = "❌";
+            }    
+        }
+    }
+  })
+
+  document.addEventListener('DOMContentLoaded', () => {
+    import("../utils/utils.js").then(({ onLoad }) => {
+        onLoad();
+    });
+});
+
+document.addEventListener('DOMContentLoaded', async () => {
+    try {
+        const response = await axios.get("../../user/me");
+        const span = document.querySelector("#welcome");
+        span.textContent = `Bienvenido/a, ${response.data.nombre} ${response.data.apellido}`;
+    } catch (error) {
+        console.log(error);
+    }
+});
