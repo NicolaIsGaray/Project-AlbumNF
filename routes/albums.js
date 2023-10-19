@@ -75,7 +75,7 @@ router.get('/selected/:idAlbumSel', async (req, res) => {
     }
 })
 
-router.delete('/album/delete/:idAlbum', async (req, res) => {
+router.delete('/delete/:idAlbum', async (req, res) => {
     try {
         await Album.findByIdAndDelete(req.params.idAlbum);
         res.status(204).send("Album Deleted Successfully")
@@ -121,12 +121,19 @@ router.put('/song/add/:idAlbum', async (req, res) => {
     }
 });
 
-router.delete('/song/remove/:idAlbum', async (req, res) => {
+router.put('/song/remove/:idAlbum', async (req, res) => {
+    let idSong = req.query.idSong;
     try {
-        let song = await Album.findByIdAndDelete(req.params.idAlbum, req.body);
-        res.status(200).send(song)
+        let album = await Album.findById(req.params.idAlbum, req.body);
+        let albumUpdated = album.songs.filter((song) => song._id != idSong);
+
+        album.songs = albumUpdated;
+        await Album.findByIdAndUpdate(req.params.idAlbum, album, {
+            new: true,
+        })
+        res.status(200).send({message: "Cancion Eliminada Correctamente."})
     } catch (error) {
-        console.log(error);
+        res.status(500).send(error)
     }
 })
 

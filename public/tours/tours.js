@@ -1,3 +1,5 @@
+import { onLoad } from "../utils/utils.js"
+
 let nombre = prompt("Porfavor, introduzca su nombre.")
 let span = document.querySelector("#welcome")
 
@@ -55,3 +57,5 @@ if (edadUsuario < 18) {
         botones[i].textContent = "❌";
     }    
 }
+
+onLoad()

@@ -1,3 +1,5 @@
+import { onLoad } from "../utils/utils.js"
+
 const urlParams = new URLSearchParams(window.location.search);
 const idAlbum = urlParams.get('album');
 
@@ -43,7 +45,11 @@ const songRegister = async (e) => {
     const ObjectToSend = getInputValues()
     try {
         await axios.put(`../../album/song/add/${idAlbum}`, ObjectToSend);
-        window.location.href = "./albums.html"
+        await swal({
+            title: "Canción Añadida Correctamente.",
+            icon: "success"
+        })
+        redirect(idAlbum)
     } catch (error) {
         console.log(error);
     }
@@ -53,3 +59,10 @@ const buttonAddSong = document.querySelector("#send");
 buttonAddSong.addEventListener("click", (e) => {
     songRegister(e);
 })
+
+const cancelButton = document.querySelector("#cancel");
+cancelButton.addEventListener("click", () => {
+    redirect(idAlbum)
+})
+
+onLoad()

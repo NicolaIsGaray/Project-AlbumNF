@@ -133,7 +133,7 @@ form #send {
     color: #707070;
   }
 
-#cancelar {
+#cancel {
     padding: 1rem 0.75rem;
     margin: 10px;
     width: 185px;
@@ -154,7 +154,7 @@ form #send {
     justify-content: center;
   }
   
- #cancelar:hover {
+ #cancel:hover {
     background-color: #b91b10;
     color: #ffffff;
   }

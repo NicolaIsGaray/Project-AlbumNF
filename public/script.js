@@ -1,16 +1,10 @@
-// innerHTML = Cambia la etiqueta
+import { onLoad } from "./utils/utils.js";
+import { logOut } from "./utils/utils.js";
 
-//Manipular Atributos
-//getAttribute = Se obtiene el valor de un atributo. Ej. img.getAttribute("src").
-//setAttribute = Se cambia el valor de un atributo. Ej img.setAttribute("src = 'nueva'").
+const buttonLogOut = document.querySelector("#logOutButton");
+buttonLogOut.addEventListener("click", () => {
+    logOut();
+    window.location.href = `./login/login.html`
+})
 
-const getAlbums = async (res) => {
-    try {
-        let response = await axios.get("../../album/showAlbums");
-        res.status(200).send(response)
-    } catch (error) {
-        console.log(error);
-    }
-}
-
-getAlbums()
+onLoad()

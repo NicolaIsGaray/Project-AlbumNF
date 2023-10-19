@@ -10,11 +10,16 @@ const PORT = process.env.PORT;
 const dbPass = process.env.MONGO_PASS;
 const dbUser = process.env.MONGO_USER;
 
+const cookieParser = require("cookie-parser");
+
 const url = `mongodb+srv://${dbUser}:${dbPass}@intro.f8ceic4.mongodb.net/?retryWrites=true&w=majority`
 
 const routes = require("./routes/index");
 
 app.use(express.json())
+
+app.use(cookieParser())
+
 app.use(
     express.static("public", {
       setHeaders: (res, path) => {

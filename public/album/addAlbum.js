@@ -1,3 +1,5 @@
+import { onLoad } from "../utils/utils.js"
+
 function getInputValues() {
     const albumTitleInput = document.querySelector("#albumTitle");
     const releaseDateInput = document.querySelector("#releaseDate");
@@ -32,3 +34,5 @@ const buttonAdd = document.querySelector("#addAlbumButton")
 buttonAdd.addEventListener("click", (e) => {
     albumRegister(e);
 })
+
+onLoad()

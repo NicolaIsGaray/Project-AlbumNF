@@ -1,3 +1,5 @@
+import { onLoad } from "../utils/utils.js"
+
 const query = window.location.search.split("=");
 const idAlbum = query[1]
 console.log(idAlbum);
@@ -75,3 +77,10 @@ const confirmUpdateButton = document.querySelector("#send");
 confirmUpdateButton.addEventListener("click", (e) => {
     updateAlbum(e);
 })
+
+const cancelButton = document.querySelector("#cancel");
+cancelButton.addEventListener("click", () => {
+    redirect(idAlbum, "./albumContent.html")
+})
+
+onLoad()

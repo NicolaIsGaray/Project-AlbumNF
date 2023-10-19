@@ -24,6 +24,11 @@ body {
     justify-content: center;
   }
 
+.swalTitle {
+  position: relative;
+  left: 0vw;
+}
+
 form {
     --bg-light: #efefef;
     --bg-dark: #707070;

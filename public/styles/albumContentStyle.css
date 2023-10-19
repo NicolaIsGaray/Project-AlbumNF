@@ -20,6 +20,10 @@ ol {
     color: #C5B2A3;
 }
 
+.songList {
+    padding: 10px;
+}
+
 .titleDiv {
     display: flex;
     position: inherit;
@@ -157,9 +161,11 @@ ol {
     outline: none;
     border: none;
     border-radius: 18px;
-    width: 40px;
+    width: 55px;
+    height: 30px;
     position: relative;
-    bottom: 45px;
+    top: 1vw;
+    right: 3vw;
     cursor: pointer;
     transition: .3s;
 }

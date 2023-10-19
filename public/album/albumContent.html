@@ -25,10 +25,13 @@
           <button class="tabButton" id="addSong">Add Song</button>
         </li>
         <li>
-            <a href="">
-                <button class="tabButton" id="logOutButton">Log Out</button>
-            </a>
+          <a href="../index.html">
+            <button class="tabButton">Back To Main</button>
+          </a>
         </li>
+        <li>
+            <button class="tabButton" id="logOutButton">Log Out</button>
+      </li>
       </ul>
 
       <div class="titleDiv">
@@ -40,30 +43,14 @@
       </div>
 
       <div id="albumList">
-        <ol>
-          <div class="groupDiv">
-            <!-- <li>
-              <div class="songTitle">
-                <span class="songTitleBox">Clouds</span>
-                <button class="deleteButton">
-                  <img src="../images/icons/deleteIco.png" alt="delete" class="deleteLogo">
-                </button>
-              </div>
-              <div class="durationDiv">
-                <p class="duration">4:04</p>
-              </div>
-              <div class="buttonBkg">
-                <button class="songsButton">
-                  <a href="https://www.youtube.com/watch?v=fibYknUCIU4" target="_blank" class="linkSong"> <img src="../images/icons/youtubeIcon.png" alt="toYoutube" class="logoImg"> 
-                  </a>
-                </button>
-              </div>
-            </li> -->
+         <ol>
+          <div id="groupDiv">
           </div>
         </ol>
       </div>
       <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="./albumContent.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+      <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="./albumContent.js" type="module"></script>
 </body>
 </html>
