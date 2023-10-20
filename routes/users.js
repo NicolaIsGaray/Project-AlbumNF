@@ -63,10 +63,10 @@ router.post('/logOut', async (req, res) => {
     }
 })
 
-router.get('/data/:id', async (req, res) => {
+router.get('/data/:idUser', async (req, res) => {
     try {
-        let answer = await User.findById(req.params.id)
-        res.status(200).send({user: {name: answer.name,
+        let answer = await User.findById(req.params.idUser)
+        res.status(200).send({user: {nombre: answer.nombre,
              apellido: answer.apellido,
               email: answer.email}})
     } catch (error) {
