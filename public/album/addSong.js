@@ -42,7 +42,32 @@ getAlbums()
 
 const songRegister = async (e) => {
     e.preventDefault();
-    const ObjectToSend = getInputValues()
+    const { titleSong, duration, link} = getInputValues();
+    const urlRegex = /^(ftp|http|https):\/\/[^ "]+$/;
+
+    if (!titleSong || !duration || !link) {
+        swal({
+            title: "Porfavor, completa los campos vacios.",
+            icon: 'warning'
+        });
+        return;
+    }
+
+    if (link && link.length >= 1){
+        if (!urlRegex.test(link)) {
+            swal({
+                title: "Por favor, ingresa una URL válida.",
+                icon: 'warning'
+            });
+            return;
+        }
+    } 
+
+    const ObjectToSend = {
+        titleSong,
+        duration,
+        link
+    };
     try {
         await axios.put(`../../album/song/add/${idAlbum}`, ObjectToSend);
         await swal({
