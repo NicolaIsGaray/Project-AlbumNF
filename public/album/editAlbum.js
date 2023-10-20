@@ -1,6 +1,8 @@
 import { onLoad } from "../utils/utils.js"
 import { logOut } from "../utils/utils.js";
 
+const addSong = document.querySelector("#addSong");
+
 const query = window.location.search.split("=");
 const idAlbum = query[1]
 console.log(idAlbum);
@@ -37,6 +39,10 @@ const obtainAlbum = async (Album) => {
     } catch (error) {
         console.log(error);
     }
+
+    addSong.addEventListener("click", () => {
+        redirect(Album._id, "./addSong.html")
+      })
 };
 
 const getAlbums = async () => {
