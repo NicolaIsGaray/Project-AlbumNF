@@ -6,10 +6,10 @@ function getInputValues() {
     const passwordInput = document.querySelector("#password");
     const lastNameInput = document.querySelector("#lastName");
 
-    const nombreValue = nombreInput.value;
-    const emailValue = emailInput.value;
-    const passwordValue = passwordInput.value;
-    const lastNameValue = lastNameInput.value;
+    const nombreValue = nombreInput.value.trim();
+    const emailValue = emailInput.value.trim();
+    const passwordValue = passwordInput.value.trim();
+    const lastNameValue = lastNameInput.value.trim();
 
     if (!passwordValue) {
         Swal.fire({
@@ -25,7 +25,7 @@ function getInputValues() {
           })
 
         return null;
-    } else if (passwordValue < 8) {
+    } else if (passwordValue.length < 8) {
         Swal.fire({
             title: 'Vaya. Eso no debió de suceder.',
             text: 'La contraseña tiene que tener al menos 8 caracteres.',
