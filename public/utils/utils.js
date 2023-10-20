@@ -3,6 +3,7 @@ const onLoad = async () => {
       const response = await axios.get("../../user/me");
       const userName = document.querySelector("#userName")
       userName.textContent = `${response.data.nombre} ${response.data.apellido}`;
+      userName.style.fontWeigth = "bold"
     } catch (error) {
       window.location.href = "../login/login.html"
     }
