@@ -21,7 +21,34 @@ function getInputValues() {
 
 const albumRegister = async (e) => {
     e.preventDefault ()
-    const ObjectToSend = getInputValues()
+    const { title, description, dateRelease, urlAlbum } = getInputValues();
+    const urlRegex = /^(ftp|http|https):\/\/[^ "]+$/;
+
+    if (!title || !dateRelease || !description) {
+        swal({
+            title: "Porfavor, completa los campos vacios.",
+            icon: 'warning'
+        });
+        return;
+    }
+
+    if (urlAlbum && urlAlbum.length >= 1){
+        if (!urlRegex.test(urlAlbum)) {
+            swal({
+                title: "Por favor, ingresa una URL válida.",
+                icon: 'warning'
+            });
+            return;
+        }
+    } 
+
+    const ObjectToSend = {
+        title,
+        description,
+        dateRelease,
+        urlAlbum
+    };
+
     try {
         await axios.post("../../album/addAlbum", ObjectToSend)
         window.location.href = "./albums.html"

@@ -23,7 +23,7 @@ router.post('/addAlbum', async (req, res) => {
 
 router.put('/editAlbum/:id', async (req, res) => {
     try {
-        const album = await Album.findByIdAndUpdate(req.params.id, req.body, {
+        const album = await Album.findByIdAndUpdate(req.params.id, req.body,{
             new: true
         })
         res.status(200).send(album)

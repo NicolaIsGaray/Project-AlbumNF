@@ -54,24 +54,50 @@ const getAlbums = async () => {
   
   getAlbums()
 
-const updateAlbum = async (e) => {
-    e.preventDefault()
-    const ObjectToUpdate = getInputValues()
+  const updateAlbum = async (e) => {
+    e.preventDefault();
+
+    const { title, description, dateRelease, urlAlbum } = getInputValues();
+    const urlRegex = /^(ftp|http|https):\/\/[^ "]+$/;
+
+    if (!title || !dateRelease || !description) {
+        swal({
+            title: "Porfavor, completa los campos vacios.",
+            icon: 'warning'
+        });
+        return;
+    }
+
+    if (urlAlbum && urlAlbum.length >= 1){
+        if (!urlRegex.test(urlAlbum)) {
+            swal({
+                title: "Por favor, ingresa una URL válida.",
+                icon: 'warning'
+            });
+            return;
+        }
+    } 
+
+
+    const ObjectToUpdate = {
+        title,
+        description,
+        dateRelease,
+        urlAlbum
+    };
+
     try {
-        await axios.put(`../../album/editAlbum/${idAlbum}`, ObjectToUpdate)
-        ? swal(
-            "Successfully Updated!",
-            "success"
-        )
-        : swal (
-            "Woops! Maybe was a error.",
-            "error"
-        )
-        window.location.href = "./albums.html"
+        await axios.put(`../../album/editAlbum/${idAlbum}`, ObjectToUpdate);
+
+        swal("Successfully Updated!", "success");
+
+        window.location.href = "./albums.html";
     } catch (error) {
         console.log(error);
+        swal("Woops! Maybe there was an error.", "error");
     }
-}
+};
+
 
 const confirmUpdateButton = document.querySelector("#send");
 confirmUpdateButton.addEventListener("click", (e) => {
