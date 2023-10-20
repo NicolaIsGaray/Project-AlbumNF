@@ -42,17 +42,34 @@ router.post('/logIn', async (req, res) => {
         const email = req.body.email;
         const password = req.body.password;
         const user = await User.findOne({email: email});
-        const match = bCrypt.compare(password, user.password);
+
+        if (!user) {
+            console.log('Usuario no encontrado');
+            return res.status(401).send({message: 'Credenciales no válidas. Verifica tu usuario y contraseña.'});
+        }
+
+        if (!password) {
+            console.log('Contraseña no proporcionada');
+            return res.status(401).send({message: 'Por favor, ingresa tu contraseña.'});
+        }
+
+        const match = await bCrypt.compare(password, user.password);
         const payload = {email, nombre: user.nombre, apellido: user.apellido};
+
         if (match) {
+            console.log('Contraseña válida. Iniciando sesión...');
             const token = jwt.sign(payload, secretW);
             res.cookie("token", token);
-            res.status(200).send(payload)
+            res.status(200).send(payload);
+        } else {
+            console.log('Contraseña incorrecta');
+            res.status(401).send({message: 'Credenciales no válidas. Verifica tu usuario y contraseña.'});
         }
     } catch (error) {
-        res.status(401).send({message: error.message})
+        console.error('Error en la autenticación:', error);
+        res.status(500).send({message: 'Error en la autenticación.'});
     }
-})
+});
 
 router.post('/logOut', async (req, res) => {
     try {
