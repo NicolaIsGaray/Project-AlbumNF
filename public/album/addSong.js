@@ -1,4 +1,5 @@
 import { onLoad } from "../utils/utils.js"
+import { logOut } from "../utils/utils.js";
 
 const urlParams = new URLSearchParams(window.location.search);
 const idAlbum = urlParams.get('album');
@@ -91,3 +92,9 @@ cancelButton.addEventListener("click", () => {
 })
 
 onLoad()
+
+const buttonLogOut = document.querySelector("#logOutButton");
+buttonLogOut.addEventListener("click", () => {
+    logOut();
+    window.location.href = `./login/login.html`
+})

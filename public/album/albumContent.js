@@ -1,10 +1,9 @@
 import { onLoad } from "../utils/utils.js"
+import { logOut } from "../utils/utils.js";
 
 //[Selección de botones (o acciones) dentro del HTML]
 const addSong = document.querySelector("#addSong")
 const editAlbum = document.querySelector("#editAlbum");
-const backMain = document.querySelector("#backMain");
-const logOut = document.querySelector("#logOut");
 
 const query = window.location.search.split("=")
 //Al momento de aplicar "split.("="), se transforma en un arreglo (?album=) en la posición 0 y lo que sigue de "=" esta en la posicion 1."
@@ -173,5 +172,11 @@ const deleteSong = async (album, song) => {
     console.log(error);
   }
 };
+
+const buttonLogOut = document.querySelector("#logOutButton");
+buttonLogOut.addEventListener("click", () => {
+    logOut();
+    window.location.href = `../login/login.html`
+})
 
 onLoad()

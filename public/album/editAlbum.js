@@ -1,4 +1,5 @@
 import { onLoad } from "../utils/utils.js"
+import { logOut } from "../utils/utils.js";
 
 const query = window.location.search.split("=");
 const idAlbum = query[1]
@@ -110,3 +111,9 @@ cancelButton.addEventListener("click", () => {
 })
 
 onLoad()
+
+const buttonLogOut = document.querySelector("#logOutButton");
+buttonLogOut.addEventListener("click", () => {
+    logOut();
+    window.location.href = `./login/login.html`
+})

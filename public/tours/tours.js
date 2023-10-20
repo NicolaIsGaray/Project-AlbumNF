@@ -78,3 +78,9 @@ document.addEventListener('DOMContentLoaded', async () => {
         window.location.href = "../login/login.html";
     }
 });
+
+const buttonLogOut = document.querySelector("#logOutButton");
+buttonLogOut.addEventListener("click", () => {
+    logOut();
+    window.location.href = `./login/login.html`
+})
