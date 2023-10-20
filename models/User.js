@@ -4,9 +4,11 @@ const regex = /^[\w-.]+@([\w-]+.)+[\w-]{2,4}$/;
 const userInfo = new mongoose.Schema ({
     nombre: {
         type: String,
+        required: true,
     },
     apellido: {
         type: String,
+        required: true,
     },
     email: {
         type: String,
@@ -18,7 +20,7 @@ const userInfo = new mongoose.Schema ({
         message:'You must enter a valid email!'
       },
     },
-    password: { type: String},
+    password: { type: String, required: true, min: 8},
     favoritesAlbums: {}
 })
 

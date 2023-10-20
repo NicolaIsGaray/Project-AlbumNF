@@ -5,13 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styles/signUpStyle.css">
     <link rel="shortcut icon" href="../icon.ico" type="image/x-icon">
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
     <title>NF - Registro</title>
 </head>
 <body>
     <div class="container">
         <div id="crearTitle"> 
             <h2>Crear Cuenta</h2> </div>
-        <form class="form" action="https://formspree.io/f/xvojkdrl" method="POST" autocomplete="off">
+        <form class="form" action="" method="POST" autocomplete="off">
             <span class="input-span">
                 <label for="name" class="label">Nombre de Usuario</label>
                 <input type="text" name="Nombre" id="name" required></span>
@@ -29,6 +33,7 @@
           </form>
     </div>
     
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="signScript.js"></script>
 </body>
