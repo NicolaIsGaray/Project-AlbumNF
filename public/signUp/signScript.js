@@ -11,18 +11,51 @@ function getInputValues() {
     const passwordValue = passwordInput.value;
     const lastNameValue = lastNameInput.value;
 
-    if (!nombreValue && !emailValue && !passwordValue && !lastNameValue) {
-        Swal.fire(
-            '¿Eh?',
-            'Creo que esto está algo vacío...',
-            'question'
-        );
-    }
-
-    if (!passwordValue || passwordValue.length < 8) {
+    if (!nombreValue) {
         Swal.fire({
             title: 'Vaya. Eso no debió de suceder.',
-            text: 'La contraseña no puede estar vacía o ser inferior a 8 caracteres.',
+            text: 'El nombre no puede estar vacío.',
+            icon: 'warning',
+            showClass: {
+                popup: 'animate__animated animate__fadeInDown'
+            },
+            hideClass: {
+                popup: 'animate__animated animate__fadeOutUp'
+            }
+        });
+        return null
+    } else if (nombreValue.length < 2) {
+        Swal.fire({
+            title: 'Vaya. Eso no debió de suceder.',
+            text: 'El nombre debe tener al menos 2 caracteres.',
+            icon: 'warning',
+            showClass: {
+                popup: 'animate__animated animate__fadeInDown'
+            },
+            hideClass: {
+                popup: 'animate__animated animate__fadeOutUp'
+            }
+        });
+        return null
+    }
+
+    if (!lastNameValue) {
+        Swal.fire({
+            title: 'Vaya. Eso no debió de suceder.',
+            text: 'El apellido no puede estar vacío.',
+            icon: 'warning',
+            showClass: {
+                popup: 'animate__animated animate__fadeInDown'
+            },
+            hideClass: {
+                popup: 'animate__animated animate__fadeOutUp'
+            }
+        });
+        return null
+    } else if (lastNameValue.length < 3) {
+        Swal.fire({
+            title: 'Vaya. Eso no debió de suceder.',
+            text: 'El apellido debe tener al menos 3 caracteres.',
             icon: 'warning',
             showClass: {
                 popup: 'animate__animated animate__fadeInDown'
@@ -49,12 +82,14 @@ function getInputValues() {
                 popup: 'animate__animated animate__fadeOutUp'
             }
         });
+
+        return null
     }
 
-    if (!lastNameValue) {
+    if (passwordValue === '' || passwordValue.length < 8) {
         Swal.fire({
             title: 'Vaya. Eso no debió de suceder.',
-            text: 'El apellido no puede estar vacío.',
+            text: 'La contraseña no puede estar vacía o ser inferior a 8 caracteres.',
             icon: 'warning',
             showClass: {
                 popup: 'animate__animated animate__fadeInDown'
@@ -63,44 +98,15 @@ function getInputValues() {
                 popup: 'animate__animated animate__fadeOutUp'
             }
         });
-    } else if (lastNameValue.length < 3) {
-        Swal.fire({
-            title: 'Vaya. Eso no debió de suceder.',
-            text: 'El apellido debe tener al menos 3 caracteres.',
-            icon: 'warning',
-            showClass: {
-                popup: 'animate__animated animate__fadeInDown'
-            },
-            hideClass: {
-                popup: 'animate__animated animate__fadeOutUp'
-            }
-        });
+        return null
     }
 
-    if (!nombreValue) {
-        Swal.fire({
-            title: 'Vaya. Eso no debió de suceder.',
-            text: 'El nombre no puede estar vacío.',
-            icon: 'warning',
-            showClass: {
-                popup: 'animate__animated animate__fadeInDown'
-            },
-            hideClass: {
-                popup: 'animate__animated animate__fadeOutUp'
-            }
-        });
-    } else if (nombreValue.length < 2) {
-        Swal.fire({
-            title: 'Vaya. Eso no debió de suceder.',
-            text: 'El nombre debe tener al menos 2 caracteres.',
-            icon: 'warning',
-            showClass: {
-                popup: 'animate__animated animate__fadeInDown'
-            },
-            hideClass: {
-                popup: 'animate__animated animate__fadeOutUp'
-            }
-        });
+    if (!nombreValue && !emailValue && !passwordValue && !lastNameValue) {
+        Swal.fire(
+            '¿Eh?',
+            'Creo que esto está algo vacío...',
+            'question'
+        );
     }
 
 
@@ -116,9 +122,9 @@ const userRegister = async (e) => {
     e.preventDefault();
     const ObjectToSend = getInputValues();
 
-    if (ObjectToSend === null) {
-        return;
-    }
+    // if (ObjectToSend === null) {
+    //     return;
+    // }
 
     try {
         await axios.post("../../user/signUp", ObjectToSend);

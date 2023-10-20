@@ -20,6 +20,12 @@ const hashPassword = async (password) => {
 
 router.post('/signUp', async (req, res) => {
     const {password, email, nombre, apellido} = req.body
+
+    if (!password) {
+        console.log('Campo inválido.');
+        return res.status(401).send({message: 'Credenciales no válidas: Contraseña.'});
+    }
+
     const hashed = await hashPassword(password);
     const user = {
         password: hashed,
@@ -42,16 +48,6 @@ router.post('/logIn', async (req, res) => {
         const email = req.body.email;
         const password = req.body.password;
         const user = await User.findOne({email: email});
-
-        if (!user) {
-            console.log('Usuario no encontrado');
-            return res.status(401).send({message: 'Credenciales no válidas. Verifica tu usuario y contraseña.'});
-        }
-
-        if (!password) {
-            console.log('Contraseña no proporcionada');
-            return res.status(401).send({message: 'Por favor, ingresa tu contraseña.'});
-        }
 
         const match = await bCrypt.compare(password, user.password);
         const payload = {email, nombre: user.nombre, apellido: user.apellido};
